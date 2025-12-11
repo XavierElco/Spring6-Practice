@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans>
+    <bean id="person" class="com.xav.pojo.Person">
+
+    </bean>
+    <bean id="user" class="com.xav.pojo.User">
+
+    </bean>
+</beans>

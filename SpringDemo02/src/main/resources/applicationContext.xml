@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    Bean通过构造期实例化-->
+    <bean id="person" class="com.xav.pojo.Person">
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <!-- 实例化工厂方式 -->
+<!--    工厂Bean-->
+    <bean id="factory" class="com.xav.factory.PetStore">
+
+    </bean>
+    <!--业务Bean-->
+    <bean id="factory1" factory-bean="factory" factory-method="getPet2">
+        <constructor-arg name="petName" value="dog">
+
+        </constructor-arg>
+    </bean>
+
+    <!-- 静态工厂实例化方式 -->
+    <bean id="staticFactory" class="com.xav.factory.PetStore" factory-method="getPet">
+        <constructor-arg name="petName" value="cat">
+
+        </constructor-arg>
+    </bean>
+
+
+</beans>

@@ -24,5 +24,26 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <!-- dom4j -->
+        <dependency>
+            <groupId>dom4j</groupId>
+
+            <artifactId>dom4j</artifactId>
+
+            <version>20040902.021138</version>
+
+        </dependency>
+
+        <!-- XPath :XPath即为XML路径语言（XML Path Language），它是一种用来确定XML文档中某部分位置的语言。
+        Jaxen是Java的通用XPath引擎。-->
+        <dependency>
+            <groupId>jaxen</groupId>
+
+            <artifactId>jaxen</artifactId>
+
+            <version>1.1.6</version>
+
+        </dependency>
+
     </dependencies>
 </project>
