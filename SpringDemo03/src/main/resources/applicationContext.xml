@@ -8,6 +8,17 @@
         <!-- collaborators and configuration for this bean go here -->
     </bean>
 
-    <!-- more bean definitions go here -->
+    <!-- 利用构造注入的方式对属性进行初始化 -->
+    <bean id="c2" class="com.xav.pojo.Clazz">
+        <constructor-arg name="cid" value="1"></constructor-arg>
+        <constructor-arg name="cname" value="SWEN30006"></constructor-arg>
+
+    </bean>
+
+    <bean id="c3" class="com.xav.pojo.Clazz">
+        <constructor-arg index="0" value="2"></constructor-arg>
+        <constructor-arg index="1" value="COMP30006"></constructor-arg>
+
+    </bean>
 
 </beans>

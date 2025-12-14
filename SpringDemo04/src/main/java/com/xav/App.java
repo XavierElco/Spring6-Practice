@@ -10,14 +10,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class App 
 {
-    public static void main( String[] args ) {
+    public static void main( String[] args )
+    {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Clazz c1 = ac.getBean("c1", Clazz.class);
-        Clazz c2 = ac.getBean("c2", Clazz.class);
-        Clazz c3 = ac.getBean("c3", Clazz.class);
+        Clazz c1 =  ac.getBean("c1", Clazz.class);
         System.out.println(c1);
-        System.out.println(c2);
-        System.out.println(c3);
     }
-
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="c1" class="com.xav.pojo.Clazz">
+        <property name="cid" value="1"></property>
+        <property name="cname" value="李成明的班级"></property>
+    </bean>
+
+    <!-- more bean definitions go here -->
+
+</beans>

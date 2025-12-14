@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--【1】通过配置bean对象，给对象属性注入值来配置连接数据库数据源
+    DriverManagerDataSource属于spring-jdbc包-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/sm?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8&amp;allowPublicKeyRetrieval=true"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="Cch123456"></property>
+    </bean>
+
+    <!--【2】配置SqlSessionFactory对象
+    SqlSessionFactoryBean属于mybatis-spring包-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--        工厂依赖数据源，需要注入数据源对应的对象-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 配置别名-->
+        <property name="typeAliasesPackage" value="com.xav.pojo"></property>
+        <!--加入配置，解析mybatis.xml-->
+<!--        <property name="configLocation" value="classpath:myBatis.xml"></property>-->
+    </bean>
+
+
+    <!--【3】扫描UserMapper文件-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入工厂-->
+        <property name="sqlSessionFactoryBeanName" value="factory"></property>
+        <!--扫描的包-->
+        <property name="basePackage" value="com.xav.mapper"></property>
+    </bean>
+
+<!--    <bean id="userServiceImpl" class="com.xav.service.impl.UserServiceImpl">-->
+<!--        <property name="userMapper" ref="userMapper"></property>-->
+<!--    </bean>-->
+
+    <!-- 多个包使用逗号分隔，下面也可以只写com.msb -->
+    <context:component-scan base-package="com.xav.service,com.xav.mapper,com.xav.test"/>
+    <!--加入properties文件的扫描-->
+    <context:property-placeholder location="classpath:a.properties"/>
+
+</beans>

@@ -13,6 +13,11 @@
         <module>SpringIocDiy</module>
         <module>SpringDemo02</module>
         <module>SpringDemo03</module>
+        <module>JavaDemo04</module>
+        <module>SpringDemo04</module>
+        <module>SpringDemo05</module>
+        <module>SpringMyBatis</module>
+        <module>SpringProxy01</module>
     </modules>
 
     <properties>
