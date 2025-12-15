@@ -19,6 +19,7 @@
         <module>SpringMyBatis</module>
         <module>SpringProxy01</module>
         <module>Spring6AOPDemo01</module>
+        <module>SpringAOPDemo02</module>
     </modules>
 
     <properties>

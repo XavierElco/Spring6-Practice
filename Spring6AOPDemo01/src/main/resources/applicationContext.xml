@@ -17,11 +17,22 @@
 
     <!--配置AOP-->
     <bean id="before" class="com.xav.advise.MyBeforeAdvice"></bean>
+    <bean id="after" class="com.xav.advise.MyAfterAdvice"></bean>
 
     <!--织入切面-->
     <aop:config>
         <aop:pointcut id="p1" expression="execution(void com.xav.service.Impl.UserServiceImpl.b(int))"/>
         <aop:advisor id="a1" pointcut-ref="p1" advice-ref="before"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="p2" expression="execution(void com.xav.service.Impl.UserServiceImpl.b(int))"/>
+        <aop:advisor id="a2" pointcut-ref="p2" advice-ref="after"/>
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="p3" expression="execution(void com.xav.service.Impl.UserServiceImpl.a())"/>
+        <aop:advisor id="a3" pointcut-ref="p3" advice-ref="after"/>
     </aop:config>
 
 

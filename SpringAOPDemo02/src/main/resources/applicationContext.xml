@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--扫描@Service注解所在的包，这样的话注解才会生效-->
+    <context:component-scan base-package="com.xav.service"></context:component-scan>
+
+    <!--构建MyAspectJAdvice对象-->
+    <bean id="aspectj" class="com.xav.advice.MyAspectJAdvice"></bean>
+
+    <!--配置切面-->
+    <aop:config>
+        <!--加入aop:aspect标签是aspectj的配置方式-->
+        <aop:aspect ref="aspectj">
+            <!--配置切点-->
+            <aop:pointcut id="p" expression="execution(void com.xav.service.Impl.UserServiceImpl.a())"/>
+            <!--给切点配置前置通知，利用标签找到对应的MyAspectJAdvice其中的before方法
+            怎么才能找到before方法呢？需要在applicationContext.xml中先构建MyAspectJAdvice对象，
+            通过ref属性加入到aop:aspect之后，然后通过aop:before标签找到对应的before方法-->
+            <aop:before method="before" pointcut-ref="p"></aop:before>
+
+            <!--配置后置通知
+            aop:after的方式： 如果出现异常，那么后置通知也会执行
+            aop:after-returning的方式：如果出现异常，那么后置通知就不执行了
+            -->
+            <!--<aop:after method="after" pointcut-ref="p"></aop:after>-->
+            <aop:after-returning method="after" pointcut-ref="p"></aop:after-returning>
+
+            <!--配置异常通知-->
+            <aop:after-throwing method="myThrow" pointcut-ref="p"></aop:after-throwing>
+
+        </aop:aspect>
+
+    </aop:config>
+
+
+</beans>
