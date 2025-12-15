@@ -36,6 +36,8 @@
             <!--配置异常通知-->
             <aop:after-throwing method="myThrow" pointcut-ref="p"></aop:after-throwing>
 
+            <aop:around method="around" pointcut-ref="p"></aop:around>
+
         </aop:aspect>
 
     </aop:config>

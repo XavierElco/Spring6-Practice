@@ -1,5 +1,8 @@
 package com.xav.advice;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+
+
 public class MyAspectJAdvice {
 
 
@@ -12,6 +15,12 @@ public class MyAspectJAdvice {
 
     public void myThrow() {
         System.out.println("------ 异常通知 -------");
+    }
+
+    public Object around(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println("------ 环绕前通知的前置通知 -------");
+        Object o = pjp.proceed();
+        return o;
     }
 
 }
