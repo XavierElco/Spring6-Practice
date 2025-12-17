@@ -21,6 +21,7 @@
         <module>Spring6AOPDemo01</module>
         <module>SpringAOPDemo02</module>
         <module>SpringJDBCDemo01</module>
+        <module>SpringTX</module>
     </modules>
 
     <properties>

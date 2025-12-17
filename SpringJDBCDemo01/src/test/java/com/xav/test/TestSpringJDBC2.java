@@ -1,20 +1,22 @@
 package com.xav.test;
 
-import com.xav.App;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-public class TestSpringJDBC {
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
+public class TestSpringJDBC2 {
+    @Autowired
     JdbcTemplate jdbc;
-    @Before
-    public void init() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        jdbc = context.getBean("jdbcTemplate", JdbcTemplate.class);
-    }
+
     @Test
     public void testQueryCount() {
         String sql = "select count(1) from tb_account where user_id = ?";
